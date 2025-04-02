@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GetTheHideOut - Malware Analysis Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-shield-virus"></i>
+                <h1>GetTheHideOut</h1>
+            </div>
+            <p class="subtitle">Advanced Malware Analysis Platform</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-box">
+                    <i class="fas fa-upload"></i>
+                    <h2>Upload File for Analysis</h2>
+                    <p>Drag and drop your executable file here or click to browse</p>
+                    <input type="file" id="fileInput" accept=".exe" style="display: none;">
+                    <button class="upload-btn" type="button">Select File</button>
+                </div>
+            </div>
+
+            <div class="analysis-results" style="display: none;">
+                <div class="window">
+                    <div class="window-header">
+                        <div class="window-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <div class="window-title">Analysis Results</div>
+                    </div>
+                    <div class="window-content">
+                        <div class="tabs">
+                            <button class="tab-btn active" data-tab="summary">Summary</button>
+                            <button class="tab-btn" data-tab="behavior">Behavior</button>
+                            <button class="tab-btn" data-tab="network">Network</button>
+                            <button class="tab-btn" data-tab="strings">Strings</button>
+                            <button class="tab-btn" data-tab="imports">Imports</button>
+                        </div>
+
+                        <div class="tab-content" id="summary">
+                            <div class="result-section">
+                                <h3>File Information</h3>
+                                <div id="fileInfo" class="info-grid"></div>
+                            </div>
+                            <div class="result-section">
+                                <h3>Security Score</h3>
+                                <div id="securityScore" class="score-container">
+                                    <div class="score-circle">
+                                        <span class="score">0</span>
+                                        <span class="score-label">Risk Level</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="behavior" style="display: none;">
+                            <div class="result-section">
+                                <h3>Process Activity</h3>
+                                <div id="processActivity" class="data-list">
+                                    <div class="loading">Analyzing process behavior...</div>
+                                </div>
+                            </div>
+                            <div class="result-section">
+                                <h3>Registry Changes</h3>
+                                <div id="registryChanges" class="data-list">
+                                    <div class="loading">Analyzing registry modifications...</div>
+                                </div>
+                            </div>
+                            <div class="result-section">
+                                <h3>File System Changes</h3>
+                                <div id="fileSystemChanges" class="data-list">
+                                    <div class="loading">Analyzing file system activity...</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="network" style="display: none;">
+                            <div class="result-section">
+                                <h3>Network Connections</h3>
+                                <div id="networkConnections" class="data-list">
+                                    <div class="loading">Analyzing network traffic...</div>
+                                </div>
+                            </div>
+                            <div class="result-section">
+                                <h3>DNS Queries</h3>
+                                <div id="dnsQueries" class="data-list">
+                                    <div class="loading">Analyzing DNS requests...</div>
+                                </div>
+                            </div>
+                            <div class="result-section">
+                                <h3>C2 Indicators</h3>
+                                <div id="c2Indicators" class="data-list">
+                                    <div class="loading">Analyzing C2 patterns...</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="strings" style="display: none;">
+                            <div class="result-section">
+                                <h3>Suspicious Strings</h3>
+                                <div id="suspiciousStrings" class="data-list">
+                                    <div class="loading">Extracting strings...</div>
+                                </div>
+                            </div>
+                            <div class="result-section">
+                                <h3>URLs & IPs</h3>
+                                <div id="urlsAndIps" class="data-list">
+                                    <div class="loading">Extracting network indicators...</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="imports" style="display: none;">
+                            <div class="result-section">
+                                <h3>Imported DLLs</h3>
+                                <div id="importedDlls" class="data-list">
+                                    <div class="loading">Analyzing imports...</div>
+                                </div>
+                            </div>
+                            <div class="result-section">
+                                <h3>API Calls</h3>
+                                <div id="apiCalls" class="data-list">
+                                    <div class="loading">Analyzing API usage...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 GetTheHideOut by LONG. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
